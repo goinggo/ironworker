@@ -22,7 +22,8 @@ then
   export GOGCCFLAGS="-g -O2 -fPIC -m64 -pthread"
   export CGO_ENABLED="1"
   export PATH=$GOROOT/bin:$PATH
-  git clone https://github.com/goinggo/ironworker $PROGRAM_FOLDER
+  go get github.com/goinggo/ironworker
+  #git clone https://username:password@github.com/goinggo/ironworker $PROGRAM_FOLDER
   cd $PROGRAM_FOLDER
   go clean -i
   go build
