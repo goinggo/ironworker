@@ -22,8 +22,8 @@ func DoWork(shutChan chan bool, waitChan chan bool, logKey string) {
 		waitChan <- true
 	}()
 
-	// Perform work for 10 seconds
-	for count := 0; count < 40; count++ {
+	// Perform work for 60 seconds
+	for count := 0; count < 240; count++ {
 
 		select {
 
