@@ -2,8 +2,8 @@ package controller
 
 import (
 	"fmt"
-	"github.com/goinggo/ironio/helper"
-	"github.com/goinggo/ironio/program"
+	"github.com/goinggo/ironworker/helper"
+	"github.com/goinggo/ironworker/program"
 	"os"
 	"os/signal"
 	"strconv"
@@ -29,7 +29,7 @@ func Run() {
 	shutChan := make(chan bool)
 
 	// Launch the work routine
-	go program.Start(shutChan, waitChan, "Test")
+	go program.DoWork(shutChan, waitChan, "Test")
 
 	// Ask the OS to notify us about events
 	signal.Notify(sigChan)

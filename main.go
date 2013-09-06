@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/goinggo/ironio/controller"
-	"github.com/goinggo/ironio/helper"
+	"github.com/goinggo/ironworker/controller"
+	"github.com/goinggo/ironworker/helper"
 )
 
 func main() {
