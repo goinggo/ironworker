@@ -3,8 +3,8 @@
 // license that can be found in the LICENSE file.
 
 /*
-	This package implements the WorkManager singleton. This manager
-	controls the starting, shutdown and processing of work.
+	This package implements the test program. It simulates 60 seconds
+	of work
 */
 package program
 
@@ -13,6 +13,7 @@ import (
 	"time"
 )
 
+// DoWork performs the work for the program
 func DoWork(shutChan chan bool, waitChan chan bool, logKey string) {
 
 	helper.WriteStdout("Program", "program.DoWork", "Program Started")

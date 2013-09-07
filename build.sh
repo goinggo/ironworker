@@ -23,11 +23,12 @@ then
   export CGO_ENABLED="1"
   export PATH=$GOROOT/bin:$PATH
   go get github.com/goinggo/ironworker
+  
   #git clone https://username:password@github.com/goinggo/ironworker $PROGRAM_FOLDER
-  cd $PROGRAM_FOLDER
-  go clean -i
-  go build
-  go install
+  #cd $PROGRAM_FOLDER
+  #go clean -i
+  #go build
+  #go install
 fi
 
 cd $CODE_FOLDER/bin
