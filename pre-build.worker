@@ -1,0 +1,4 @@
+exec 'ironworker'
+build 'sh ./pre-build.sh'
+file 'pre-build.sh'
+dir '$HOME/Container/code/bin'
