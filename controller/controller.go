@@ -63,7 +63,7 @@ func Run() {
 
 				helper.WriteStdout("Main", "controller.Run", "******> Program Being Killed")
 
-				// Close the signal channel to tell the program to shutdown
+				// Signal the program to shutdown and wait for confirmation
 				shutChan <- true
 				<-shutChan
 
