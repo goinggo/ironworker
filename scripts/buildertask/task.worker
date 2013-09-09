@@ -1,0 +1,4 @@
+runtime 'binary'
+exec 'task.sh'
+build 'sh ./task-builder.sh'
+file 'task-builder.sh'

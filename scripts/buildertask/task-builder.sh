@@ -22,3 +22,6 @@ export CGO_ENABLED="1"
 export PATH=$GOROOT/bin:$PATH
 
 go get -x github.com/goinggo/ironworker
+
+cd $CODE_FOLDER/bin
+cp ironworker $HOME/__build__/ironworker
