@@ -15,19 +15,15 @@ import (
 
 // DoWork performs the work for the program
 func DoWork(shutChan chan bool, waitChan chan bool, logKey string) {
-
 	helper.WriteStdout("Program", "program.DoWork", "Program Started")
 
 	defer func() {
-
 		waitChan <- true
 	}()
 
 	// Perform work for 60 seconds
 	for count := 0; count < 240; count++ {
-
 		select {
-
 		case <-shutChan:
 
 			helper.WriteStdout("Program", "program.DoWork", "Info : Completed : KILL REQUESTED")
@@ -35,7 +31,6 @@ func DoWork(shutChan chan bool, waitChan chan bool, logKey string) {
 			return
 
 		default:
-
 			helper.WriteStdoutf("Program", "program.DoWork", "Info : Performing Work : %d", count)
 			time.Sleep(time.Millisecond * 250)
 		}

@@ -22,7 +22,6 @@ import (
 
 // main is the entry point for the program
 func main() {
-
 	helper.WriteStdout("Main", "main", "Started")
 
 	controller.Run()

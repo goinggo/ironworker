@@ -15,7 +15,6 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
-	"syscall"
 )
 
 const (
@@ -25,7 +24,6 @@ const (
 
 // Run is the entry point for the controller
 func Run() {
-
 	helper.WriteStdout("Main", "controller.Run", "Started")
 
 	// Create a channel to talk with the OS
@@ -44,22 +42,15 @@ func Run() {
 	signal.Notify(sigChan)
 
 	for {
-
 		select {
-
 		case whatSig := <-sigChan:
-
 			// Convert the signal to an integer so we can display the hex number
 			sigAsInt, _ := strconv.Atoi(fmt.Sprintf("%d", whatSig))
 
 			helper.WriteStdoutf("Main", "controller.Run", "******> OS Notification: %v : %#x", whatSig, sigAsInt)
 
 			// Did we get any of these termination events
-			if whatSig == syscall.SIGINT ||
-				whatSig == syscall.SIGKILL ||
-				whatSig == syscall.SIGQUIT ||
-				whatSig == syscall.SIGSTOP ||
-				whatSig == syscall.SIGTERM {
+			if whatSig == os.Interrupt {
 
 				helper.WriteStdout("Main", "controller.Run", "******> Program Being Killed")
 
@@ -70,11 +61,9 @@ func Run() {
 				helper.WriteStdout("Main", "controller.Run", "******> Shutting Down")
 				return
 			}
-
 			continue
 
 		case <-waitChan:
-
 			helper.WriteStdout("Main", "controller.Run", "******> Shutting Down")
 			return
 		}
