@@ -9,12 +9,10 @@
 package controller
 
 import (
-	"fmt"
 	"github.com/goinggo/ironworker/helper"
 	"github.com/goinggo/ironworker/program"
 	"os"
 	"os/signal"
-	"strconv"
 )
 
 const (
@@ -39,35 +37,23 @@ func Run() {
 	go program.DoWork(shutChan, waitChan, "Test")
 
 	// Ask the OS to notify us about events
-	signal.Notify(sigChan)
+	signal.Notify(sigChan, os.Interrupt)
 
 	for {
 		select {
-		case whatSig := <-sigChan:
-			// Convert the signal to an integer so we can display the hex number
-			sigAsInt, _ := strconv.Atoi(fmt.Sprintf("%d", whatSig))
+		case <-sigChan:
+			helper.WriteStdout("Main", "controller.Run", "******> Program Being Killed")
 
-			helper.WriteStdoutf("Main", "controller.Run", "******> OS Notification: %v : %#x", whatSig, sigAsInt)
+			// Signal the program to shutdown and wait for confirmation
+			shutChan <- true
+			<-shutChan
 
-			// Did we get any of these termination events
-			if whatSig == os.Interrupt {
-
-				helper.WriteStdout("Main", "controller.Run", "******> Program Being Killed")
-
-				// Signal the program to shutdown and wait for confirmation
-				shutChan <- true
-				<-shutChan
-
-				helper.WriteStdout("Main", "controller.Run", "******> Shutting Down")
-				return
-			}
-			continue
+			helper.WriteStdout("Main", "controller.Run", "******> Shutting Down")
+			return
 
 		case <-waitChan:
 			helper.WriteStdout("Main", "controller.Run", "******> Shutting Down")
 			return
 		}
 	}
-
-	helper.WriteStdout("Main", "controller.Run", "Completed")
 }

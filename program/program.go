@@ -25,7 +25,6 @@ func DoWork(shutChan chan bool, waitChan chan bool, logKey string) {
 	for count := 0; count < 240; count++ {
 		select {
 		case <-shutChan:
-
 			helper.WriteStdout("Program", "program.DoWork", "Info : Completed : KILL REQUESTED")
 			shutChan <- true
 			return
