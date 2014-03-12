@@ -20,7 +20,7 @@ import (
 	"github.com/goinggo/ironworker/helper"
 )
 
-// main is the entry point for the program
+// main is the entry point for the program.
 func main() {
 	helper.WriteStdout("Main", "main", "Started")
 

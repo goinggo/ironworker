@@ -4,7 +4,7 @@
 
 /*
 	This package implements the test program. It simulates 60 seconds
-	of work
+	of work.
 */
 package program
 
@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-// DoWork performs the work for the program
+// DoWork performs the work for the program.
 func DoWork(shutChan chan bool, waitChan chan bool, logKey string) {
 	helper.WriteStdout("Program", "program.DoWork", "Program Started")
 
@@ -21,7 +21,7 @@ func DoWork(shutChan chan bool, waitChan chan bool, logKey string) {
 		waitChan <- true
 	}()
 
-	// Perform work for 60 seconds
+	// Perform work for 60 seconds.
 	for count := 0; count < 240; count++ {
 		select {
 		case <-shutChan:

@@ -4,7 +4,7 @@
 
 /*
 	This package provides helper functions for logging and catching
-	panicks
+	panics.
 */
 package helper
 
@@ -14,17 +14,17 @@ import (
 	"time"
 )
 
-// _WriteStdout is used to write message directly stdout
+// WriteStdout is used to write message directly stdout.
 func WriteStdout(goRoutine string, functionName string, message string) {
 	fmt.Printf("%s : %s : %s : %s\n", time.Now().Format("2006-01-02T15:04:05.000"), goRoutine, functionName, message)
 }
 
-// _WriteStdoutf is used to write a formatted message directly stdout
+// WriteStdoutf is used to write a formatted message directly stdout.
 func WriteStdoutf(goRoutine string, functionName string, format string, a ...interface{}) {
 	WriteStdout(goRoutine, functionName, fmt.Sprintf(format, a...))
 }
 
-// CatchPanic is used to catch and display panics
+// CatchPanic is used to catch and display panics.
 func CatchPanic(err *error, goRoutine string, function string) {
 	if r := recover(); r != nil {
 		// Capture the stack trace
