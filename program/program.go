@@ -2,10 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-/*
-	This package implements the test program. It simulates 60 seconds
-	of work.
-*/
+// Package program implements the test program. It simulates 60 seconds of work.
 package program
 
 import (

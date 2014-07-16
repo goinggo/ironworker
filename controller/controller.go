@@ -3,21 +3,17 @@
 // license that can be found in the LICENSE file.
 
 /*
-	This package controls the running and termination of the program.
-	Used to test if IronWorker will send OS signals on a call to kill.
+Package controller controls the running and termination of the program.
+Used to test if IronWorker will send OS signals on a call to kill.
 */
 package controller
 
 import (
-	"github.com/goinggo/ironworker/helper"
-	"github.com/goinggo/ironworker/program"
 	"os"
 	"os/signal"
-)
 
-const (
-	NAMESPACE  = "controller"
-	GO_ROUTINE = "main"
+	"github.com/goinggo/ironworker/helper"
+	"github.com/goinggo/ironworker/program"
 )
 
 // Run is the entry point for the controller.
